@@ -1,6 +1,6 @@
 ## 개요
 
-- Issue 번호 :
+- Issue 번호 (close/fix/resolve) :
 
 ## 작업사항
 
