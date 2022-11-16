@@ -1,6 +1,5 @@
 import numpy as np
 
-
 def raw_to_fourier(df, fs):
     
     col = len(df.columns)
