@@ -1,21 +1,21 @@
 import numpy as np
 
-
 def raw_to_fourier(df, fs):
     
-    col = len(df.columns)
     fft_lst = []
-    freq_lst = []
-    for i in range(col):
+
+    iter = len(df.columns)
+    n = len(df)
+
+    k = np.arange(n) 
+    Fs = fs
+    T = n/Fs 
+    freq = k/T
+    freq = freq[range(int(n))]
+
+    for i in range(iter):
         
         df_col = df.iloc[:, [i]]
-
-        n = len(df_col) 
-        k = np.arange(n) 
-        Fs = fs
-        T = n/Fs 
-        freq = k/T
-        freq = freq[range(int(n))] 
 
         Y = np.fft.fft(df_col)/n
         
@@ -24,6 +24,5 @@ def raw_to_fourier(df, fs):
         abs_Y = abs(Y) ** 2 
 
         fft_lst.append(abs_Y)
-        freq_lst.append([freq])  
 
-    return fft_lst, freq_lst
+    return fft_lst, freq
