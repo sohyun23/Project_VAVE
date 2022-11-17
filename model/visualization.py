@@ -1,3 +1,6 @@
+import matplotlib.pyplot as plt
+
+
 def visualization(data):
     data['target'] = 'Normal'
     data['target'].iloc[int(len(data)/2):] = 'Abnormal'
