@@ -4,7 +4,7 @@ import numpy as np
 def fs_to_freq(n, fs):
 
     k = np.arange(n)
-    Fs = fs
+    Fs = int(fs)
     T = n/Fs
     freq = k/T
     freq = freq[range(int(n))]
