@@ -1,3 +1,6 @@
+import pandas as pd
+
+
 def generate_data_features(data, window_size):
     result = pd.DataFrame()
 
