@@ -7,7 +7,7 @@ def fs_to_freq(n, fs):
     Fs = int(fs)
     T = n/Fs
     freq = k/T
-    freq = freq[range(int(n))]
+    freq = freq[range(int(n/2))]
 
     return freq
 
