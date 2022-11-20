@@ -14,9 +14,8 @@ import tsne as ts
 import visualization as vi
 import raw_to_fourier as fr
 import data_window_size as cut
-<<<<<<< HEAD
 import warnings
-=======
+
 
 from sklearn.decomposition import PCA
 from sklearn.manifold import TSNE
