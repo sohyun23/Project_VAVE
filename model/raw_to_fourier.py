@@ -2,6 +2,10 @@ import numpy as np
 
 
 def fs_to_freq(n, fs):
+<<<<<<< HEAD
+=======
+
+>>>>>>> b9a63e57993ac14b4e666c332455aef270c63cad
     k = np.arange(n)
     Fs = int(fs)
     T = n/Fs
@@ -30,3 +34,7 @@ def raw_to_fourier(wav_np):
     #     fft_lst.append(abs_Y)
 
     return signal
+<<<<<<< HEAD
+=======
+
+>>>>>>> b9a63e57993ac14b4e666c332455aef270c63cad
