@@ -1,5 +1,6 @@
 import numpy as np
 
+
 def fs_to_freq(n, fs):
     k = np.arange(n)
     Fs = int(fs)

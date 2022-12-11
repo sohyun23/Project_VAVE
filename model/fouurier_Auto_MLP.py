@@ -36,7 +36,7 @@ all_dataset = np.loadtxt(args.raw_data_path, delimiter=',')
 index_list = list(range(0, 80001, 1250))
 dataset_list = []
 for idx in range(1, len(index_list)):
-    dataset_list.appen(
+    dataset_list.append(
         all_dataset[index_list[idx-1]: index_list[idx]]
     )
 
