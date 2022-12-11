@@ -11,7 +11,7 @@ from sklearn.decomposition import PCA
 from sklearn.manifold import TSNE
 from sklearn.preprocessing import StandardScaler
 
-import raw_to_fourier as fr
+import joblib
 
 import warnings
 warnings.simplefilter(
@@ -24,6 +24,7 @@ parser.add_argument('fs', help='sampling frequency (hz unit)')
 
 args = parser.parse_args()
 all_dataset = np.loadtxt(args.raw_data_path, delimiter=',')
+# all_dataset = args.raw_data_path
 index_list = list(range(0, 80001, 1250))
 dataset_list = []
 for idx in range(1, len(index_list)):
@@ -68,7 +69,6 @@ all_dataset = np.concatenate(
 all_df = pd.DataFrame(all_dataset.T, columns=list(range(0, 8)))
 all_df["label"] = 0
 all_df["label"][5000:] = 1
-
 # PCA solution
 pca = PCA(n_components=3)  # 주성분을 몇개로 할지 결정
 pca_features = pca.fit_transform(all_df.iloc[:, 0: 8])
@@ -98,10 +98,5 @@ mlp = MLPClassifier(hidden_layer_sizes=(10, 128, 256,), activation='logistic',
                     learning_rate_init=0.1, max_iter=500)  # 객체 생성
 
 mlp.fit(x_train_scaled, y_train_all)    # 훈련하기
-
-# import pickle
-import joblib
-
-joblib.dump(mlp, 'model_pickle/pca_t-sne_model.pkl')
-
-# print(mlp.score(x_test_scaled, y_test))      # 정확도 평가
+joblib.dump(mlp, "model_pickle/pca_t-sne_model.pkl")
+# # print(mlp.score(x_test_scaled, y_test))      # 정확도 평가
