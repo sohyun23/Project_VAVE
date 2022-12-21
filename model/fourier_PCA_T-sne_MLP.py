@@ -36,7 +36,7 @@ fr_dataset = []
 for dataset in dataset_list:
     normal_dataset = dataset[:, 0]
     abnormal_dataset = dataset[:, 1]
-    freq = fr.fs_to_freq(n=1250, fs=args.fs)
+    # freq = fr.fs_to_freq(n=1250, fs=args.fs)
     fr_normal = fr.raw_to_fourier(normal_dataset)
     fr_abnormal = fr.raw_to_fourier(abnormal_dataset)
     fr_dataset.append([fr_normal, fr_abnormal])
@@ -98,5 +98,8 @@ mlp = MLPClassifier(hidden_layer_sizes=(10, 128, 256,), activation='logistic',
                     learning_rate_init=0.1, max_iter=500)  # 객체 생성
 
 mlp.fit(x_train_scaled, y_train_all)    # 훈련하기
-joblib.dump(mlp, "model_pickle/pca_t-sne_model.pkl")
+
+pickle_out = open("../modelback/pickle_model/pca_t-sne_model.pkl","wb")
+pickle.dump(mlp, pickle_out)
+pickle_out.close()
 # # print(mlp.score(x_test_scaled, y_test))      # 정확도 평가
